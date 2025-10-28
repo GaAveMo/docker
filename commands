@@ -1,0 +1,7 @@
+lab2 /image with hello world
+docker build -t my-python-app .
+docker run -d -p 8080:8080 my-python-app
+
+lab3 /little service with flask python
+docker build -t flask-service .
+docker run -d -p 5001:5000 flask-service
