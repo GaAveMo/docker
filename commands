@@ -1,15 +1,12 @@
-lab2 /image with hello world
-docker build -t my-python-app .
-docker run -d -p 8080:8080 my-python-app
+# messaging architecture using Docker. Up 3 container (Producer → RabbitMQ → Consumer)
+# Producer -> port 5001
+# Consumer -> listen to queue
+docker-compose up --build
 
-lab3 /little service with flask python
-docker build -t flask-service .
-docker run -d -p 5001:5000 flask-service
-
-lab4 / sqlite connected with flask. Logic is to POST and GET data drom DB
-docker build -t flask-db-service .
-docker run -d -p 5001:5000 flask-db-service
---- Data for posting to db ----
-curl -X POST http://localhost:5001/messages \
+curl -X POST http://localhost:5000/send \
 -H "Content-Type: application/json" \
--d '{"text":"Hello Lab 4"}'
+-d '{"message":"Hello Lab 5"}'
+
+# Producer: a service that sends messages to a queue.
+# RabbitMQ: a message broker that holds messages until they are processed.
+# Consumer: a service that receives messages from the queue and performs actions.
