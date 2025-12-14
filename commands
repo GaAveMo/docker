@@ -5,3 +5,11 @@ docker run -d -p 8080:8080 my-python-app
 lab3 /little service with flask python
 docker build -t flask-service .
 docker run -d -p 5001:5000 flask-service
+
+lab4 / sqlite connected with flask. Logic is to POST and GET data drom DB
+docker build -t flask-db-service .
+docker run -d -p 5001:5000 flask-db-service
+--- Data for posting to db ----
+curl -X POST http://localhost:5001/messages \
+-H "Content-Type: application/json" \
+-d '{"text":"Hello Lab 4"}'
