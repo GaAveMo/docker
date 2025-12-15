@@ -1,0 +1,14 @@
+#Docker images for producer and consumer were built from the project root directory
+#and deployed to the Minikube Kubernetes cluster
+
+//build the images
+eval $(minikube docker-env)
+docker build -t producer ./producer 
+docker build -t consumer ./consumer 
+
+//Verify images
+docker images | grep -E "producer|consumer"
+
+kubectl apply -f producer-deployment.yaml
+kubectl apply -f consumer-deployment.yaml
+kubectl get pods
